@@ -2,51 +2,46 @@ import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import coverImage from './images/cover.png';
 
+// Example images for each tab
+import suiteImage from './images/suites.jpg';
+import foodImage from './images/foods.jpg';
+import natureImage from './images/nature.jpg';
+import activityImage from './images/activities.jpg';
+
 function App() {
   const carouselRef = useRef(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [activeTab, setActiveTab] = useState('Suites');
 
-  // Auto slide configuration
   useEffect(() => {
     const interval = setInterval(() => {
       if (carouselRef.current) {
-        // Auto scroll to next box
-        carouselRef.current.scrollLeft += 250; // Scroll by 250px
+        carouselRef.current.scrollLeft += 250;
       }
-    }, 3000); // Auto slide every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Handle mouse down (start dragging)
   const handleMouseDown = (e) => {
     setIsMouseDown(true);
     setStartX(e.pageX - carouselRef.current.offsetLeft);
     setScrollLeft(carouselRef.current.scrollLeft);
   };
 
-  // Handle mouse leave (end dragging)
-  const handleMouseLeave = () => {
-    setIsMouseDown(false);
-  };
+  const handleMouseLeave = () => setIsMouseDown(false);
+  const handleMouseUp = () => setIsMouseDown(false);
 
-  // Handle mouse up (end dragging)
-  const handleMouseUp = () => {
-    setIsMouseDown(false);
-  };
-
-  // Handle mouse move (dragging)
   const handleMouseMove = (e) => {
     if (!isMouseDown) return;
     e.preventDefault();
     const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust the scroll speed
+    const walk = (x - startX) * 2;
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  // Handle touch events for mobile
   const handleTouchStart = (e) => {
     const touchStart = e.touches[0].clientX;
     setIsMouseDown(true);
@@ -54,16 +49,30 @@ function App() {
     setScrollLeft(carouselRef.current.scrollLeft);
   };
 
-  const handleTouchEnd = () => {
-    setIsMouseDown(false);
-  };
+  const handleTouchEnd = () => setIsMouseDown(false);
 
   const handleTouchMove = (e) => {
     if (!isMouseDown) return;
     e.preventDefault();
     const touchMove = e.touches[0].clientX;
-    const walk = (touchMove - startX) * 2; // Adjust the scroll speed
+    const walk = (touchMove - startX) * 2;
     carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  // Function to render images based on active tab
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'Suites':
+        return <img src={suiteImage} alt="Suites" className="tab-image" />;
+      case 'Foods':
+        return <img src={foodImage} alt="Foods" className="tab-image" />;
+      case 'Nature':
+        return <img src={natureImage} alt="Nature" className="tab-image" />;
+      case 'Activities':
+        return <img src={activityImage} alt="Activities" className="tab-image" />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -89,7 +98,15 @@ function App() {
 
       <div className="coast-content">
         <p>
-        Welcome to The Coast Hotel – where comfort meets the sea breeze.  Nestled along the serene shoreline, The Coast Hotel offers a relaxing escape with modern amenities and a touch of coastal charm. Whether you're planning a romantic getaway, a family vacation, or a quick business trip, our elegantly designed rooms and exceptional service promise a stay to remember.  Enjoy beautiful ocean views, world-class dining, and the peaceful ambiance that only the coast can offer. Your perfect stay starts here.        </p>
+          Welcome to The Coast Hotel – where comfort meets the sea breeze.
+          Nestled along the serene shoreline, The Coast Hotel offers a relaxing
+          escape with modern amenities and a touch of coastal charm. Whether
+          you're planning a romantic getaway, a family vacation, or a quick
+          business trip, our elegantly designed rooms and exceptional service
+          promise a stay to remember. Enjoy beautiful ocean views, world-class
+          dining, and the peaceful ambiance that only the coast can offer.
+          Your perfect stay starts here.
+        </p>
       </div>
 
       <div className="coast-services">
@@ -116,9 +133,29 @@ function App() {
           <div className="carousel-box">Beach Access</div>
         </div>
       </div>
+<div className="coast-gallery">
+<h2>A Glimpse of Coast</h2>
 
-      <div className="coast-gallery">
-        <h2>A Glimpse of Coast</h2>
+</div>
+      <div >
+
+        {/* Tab Bar */}
+        <div className="tab-bar">
+          {['Suites', 'Foods', 'Nature', 'Activities'].map((tab) => (
+            <button
+              key={tab}
+              className={`tab-button ${activeTab === tab ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Content */}
+        <div className="tab-content">
+          {renderTabContent()}
+        </div>
       </div>
     </div>
   );
