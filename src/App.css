@@ -94,7 +94,21 @@ body, html {
   font-weight: 300;
   color: #64625C;
   text-align: center;
-
+}
+.coast-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  font-family: 'Birthstone', cursive; 
+  text-align: center;
+  margin-top: -15rem;
+  font-size: 60px;
+  font-weight: 300;
+  color: #64625C;
+  text-align: center;
 }
 .carousel-wrapper {
   display: flex;
@@ -117,6 +131,8 @@ body, html {
   align-items: center; 
   margin-left: 60px;
   margin-top: -15rem;
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
 
 .carousel {

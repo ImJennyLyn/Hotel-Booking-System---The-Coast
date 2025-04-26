@@ -89,8 +89,7 @@ function App() {
 
       <div className="coast-content">
         <p>
-          Welcome to The Coast Hotel – where comfort meets the sea breeze. Nestled along the serene shoreline, The Coast Hotel offers a relaxing escape with modern amenities and a touch of coastal charm.
-        </p>
+        Welcome to The Coast Hotel – where comfort meets the sea breeze.  Nestled along the serene shoreline, The Coast Hotel offers a relaxing escape with modern amenities and a touch of coastal charm. Whether you're planning a romantic getaway, a family vacation, or a quick business trip, our elegantly designed rooms and exceptional service promise a stay to remember.  Enjoy beautiful ocean views, world-class dining, and the peaceful ambiance that only the coast can offer. Your perfect stay starts here.        </p>
       </div>
 
       <div className="coast-services">
@@ -116,6 +115,10 @@ function App() {
           <div className="carousel-box">Conference Room</div>
           <div className="carousel-box">Beach Access</div>
         </div>
+      </div>
+
+      <div className="coast-gallery">
+        <h2>A Glimpse of Coast</h2>
       </div>
     </div>
   );
