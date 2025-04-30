@@ -1,199 +1,41 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import coverImage from './images/cover.png';
 
-// Images for Tabs
-import suiteImage1 from './images/suites1.jpg';
-import suiteImage2 from './images/suites2.jpg';
-import suiteImage3 from './images/suites3.jpg';
-
-import foodImage1 from './images/foods1.jpg';
-import foodImage2 from './images/foods2.jpg';
-import foodImage3 from './images/foods3.jpg';
-
-import natureImage1 from './images/nature1.jpg';
-import natureImage2 from './images/nature2.jpg';
-import natureImage3 from './images/nature3.jpg';
-
-import activityImage1 from './images/activities1.jpg';
-import activityImage2 from './images/activities2.jpg';
-import activityImage3 from './images/activities3.jpg';
+import HomePage from './HomePage';
+import RoomsPage from './RoomsPage';
+import BookNowPage from './BookNowPage';
+import Navbar from './NavBar';
 
 function App() {
-  const carouselRef = useRef(null);
   const servicesRef = useRef(null);
   const galleryRef = useRef(null);
   const contactRef = useRef(null);
 
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [activeTab, setActiveTab] = useState('Suites');
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (carouselRef.current) {
-        carouselRef.current.scrollLeft += 250;
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Mouse and Touch Handlers for Carousel
-  const handleMouseDown = (e) => {
-    setIsMouseDown(true);
-    setStartX(e.pageX - carouselRef.current.offsetLeft);
-    setScrollLeft(carouselRef.current.scrollLeft);
-  };
-  const handleMouseLeave = () => setIsMouseDown(false);
-  const handleMouseUp = () => setIsMouseDown(false);
-  const handleMouseMove = (e) => {
-    if (!isMouseDown) return;
-    e.preventDefault();
-    const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
-  const handleTouchStart = (e) => {
-    const touchStart = e.touches[0].clientX;
-    setIsMouseDown(true);
-    setStartX(touchStart - carouselRef.current.offsetLeft);
-    setScrollLeft(carouselRef.current.scrollLeft);
-  };
-  const handleTouchEnd = () => setIsMouseDown(false);
-  const handleTouchMove = (e) => {
-    if (!isMouseDown) return;
-    e.preventDefault();
-    const touchMove = e.touches[0].clientX;
-    const walk = (touchMove - startX) * 2;
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  // Tab Content Renderer
-  const renderTabContent = () => {
-    let images = [];
-
-    switch (activeTab) {
-      case 'Suites':
-        images = [suiteImage1, suiteImage2, suiteImage3];
-        break;
-      case 'Foods':
-        images = [foodImage1, foodImage2, foodImage3];
-        break;
-      case 'Nature':
-        images = [natureImage1, natureImage2, natureImage3];
-        break;
-      case 'Activities':
-        images = [activityImage1, activityImage2, activityImage3];
-        break;
-      default:
-        images = [];
-    }
-
-    return (
-      <div className="tab-images">
-        {images.map((imgSrc, index) => (
-          <img key={index} src={imgSrc} alt={`${activeTab} ${index + 1}`} className="tab-image" />
-        ))}
-      </div>
-    );
-  };
-
-  // Scroll to sections
   const scrollToSection = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    ref?.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="App">
-      {/* Navbar */}
-      <nav className="navbar">
-        <ul className="nav-left">
-          <li>Home</li>
-          <li>Rooms</li>
-          <li>Book Now</li>
-        </ul>
-        <div className="nav-center">The Coast</div>
-        <ul className="nav-right">
-          <li onClick={() => scrollToSection(servicesRef)}>Services</li>
-          <li onClick={() => scrollToSection(galleryRef)}>Gallery</li>
-          <li onClick={() => scrollToSection(contactRef)}>Contacts</li>
-        </ul>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="hero">
-        <img src={coverImage} alt="Hotel Cover" className="cover-image" />
-        <div className="overlay-text">The Coast Hotel</div>
-      </section>
-
-      {/* Welcome Text */}
-      <section className="coast-content">
-        <p>
-          Welcome to The Coast Hotel – where comfort meets the sea breeze.
-          Nestled along the serene shoreline, The Coast Hotel offers a relaxing
-          escape with modern amenities and a touch of coastal charm. Whether
-          you're planning a romantic getaway, a family vacation, or a business trip,
-          our elegant rooms and exceptional service promise a memorable stay.
-        </p>
-      </section>
-
-      {/* Services Section */}
-      <section ref={servicesRef} className="coast-services">
-        <h2>What We Offer</h2>
-        <div
-          ref={carouselRef}
-          className="carousel-container"
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          onTouchMove={handleTouchMove}
-        >
-          <div className="carousel">
-            <div className="carousel-box">Deluxe Room</div>
-            <div className="carousel-box">Ocean View</div>
-            <div className="carousel-box">Spa & Wellness</div>
-            <div className="carousel-box">Fine Dining</div>
-            <div className="carousel-box">Conference Room</div>
-            <div className="carousel-box">Beach Access</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section ref={galleryRef} className="coast-gallery">
-        <h2>A Glimpse of Coast</h2>
-        {/* Tab Bar */}
-        <div className="tab-bar">
-          {['Suites', 'Foods', 'Nature', 'Activities'].map((tab) => (
-            <button
-              key={tab}
-              className={`tab-button ${activeTab === tab ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Tab Content */}
-        <div className="tab-content">
-          {renderTabContent()}
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section ref={contactRef} className="coast-contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@thecoasthotel.com</p>
-        <p>Phone: +1 234 567 8900</p>
-        <p>Location: 123 Beachfront Avenue, Seaside City</p>
-      </section>
-    </div>
+    <Router>
+      <Navbar
+        scrollToSection={scrollToSection}
+        servicesRef={servicesRef}
+        galleryRef={galleryRef}
+        contactRef={contactRef}
+      />
+      <Routes>
+        <Route path="/" element={
+          <HomePage
+            servicesRef={servicesRef}
+            galleryRef={galleryRef}
+            contactRef={contactRef}
+          />
+        } />
+        <Route path="/rooms" element={<RoomsPage />} />
+        <Route path="/book" element={<BookNowPage />} />
+      </Routes>
+    </Router>
   );
 }
 
