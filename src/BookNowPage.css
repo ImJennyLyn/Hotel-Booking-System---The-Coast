@@ -1,0 +1,77 @@
+/* BookNowPage.css */
+
+/* Container for the booking page */
+.booking-container {
+    max-width: 600px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Center the container */}
+  
+  /* Header styling */
+  .booking-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Description paragraph */
+  .booking-container p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Form field styling */
+  .booking-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Each form field styling */
+  .booking-container .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Label for form fields */
+  .booking-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  /* Input field styling */
+  .booking-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+  
+  /* Submit button styling */
+  .booking-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .booking-container button:hover {
+    background-color: #45a049;
+  }
+  
+  .booking-container button:focus {
+    outline: none;
+  }
+  
