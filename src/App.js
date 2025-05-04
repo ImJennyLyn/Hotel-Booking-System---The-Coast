@@ -1,39 +1,19 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-
-import HomePage from './HomePage';
-import RoomsPage from './RoomsPage';
-import BookNowPage from './BookNowPage';
-import Navbar from './NavBar';
+import Navbar from './NavBar';  // Import Navbar
+import HomePage from './HomePage';  // Import HomePage
+import RoomPage from './RoomPage';  // Import RoomPage
+import BookNowPage from './BookNowPage';  // Import BookNowPage
 
 function App() {
-  const servicesRef = useRef(null);
-  const galleryRef = useRef(null);
-  const contactRef = useRef(null);
-
-  const scrollToSection = (ref) => {
-    ref?.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <Router>
-      <Navbar
-        scrollToSection={scrollToSection}
-        servicesRef={servicesRef}
-        galleryRef={galleryRef}
-        contactRef={contactRef}
-      />
+      <Navbar /> {/* This is where your Navbar is included */}
       <Routes>
-        <Route path="/" element={
-          <HomePage
-            servicesRef={servicesRef}
-            galleryRef={galleryRef}
-            contactRef={contactRef}
-          />
-        } />
-        <Route path="/rooms" element={<RoomsPage />} />
-        <Route path="/book" element={<BookNowPage />} />
+        {/* Define the Routes for different pages */}
+        <Route path="/" element={<HomePage />} />   {/* Home page route */}
+        <Route path="/rooms" element={<RoomPage />} />  {/* Room page route */}
+        <Route path="/book" element={<BookNowPage />} />  {/* Book now page route */}
       </Routes>
     </Router>
   );

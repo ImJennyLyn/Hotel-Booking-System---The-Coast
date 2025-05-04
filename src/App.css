@@ -10,7 +10,7 @@ body, html {
 
 }
 
-.navbar {
+/* .navbar {
   position: fixed;
   top: 0;
   width: 100%;
@@ -41,7 +41,7 @@ body, html {
   font-weight: bold;
   color: #003366;
   letter-spacing: 1px;
-}
+} */
 
 .hero {
   margin-top: 60px; /* space below navbar */

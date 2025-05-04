@@ -1,10 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
-import { useLocation, useNavigate } from 'react-router-dom'; // Add these imports
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import HomePage from './HomePage';
-import RoomsPage from './RoomsPage';
-import BookNowPage from './BookNowPage';
+import { useLocation, useNavigate } from 'react-router-dom'; // Add these imports if needed
+
 import coverImage from './images/cover.png';
 
 // Images for Tabs
@@ -24,7 +21,7 @@ import activityImage1 from './images/activities1.jpg';
 import activityImage2 from './images/activities2.jpg';
 import activityImage3 from './images/activities3.jpg';
 
-function App() {
+function HomePage() {
   const carouselRef = useRef(null);
   const servicesRef = useRef(null);
   const galleryRef = useRef(null);
@@ -51,6 +48,7 @@ function App() {
     setStartX(e.pageX - carouselRef.current.offsetLeft);
     setScrollLeft(carouselRef.current.scrollLeft);
   };
+
   const handleMouseLeave = () => setIsMouseDown(false);
   const handleMouseUp = () => setIsMouseDown(false);
   const handleMouseMove = (e) => {
@@ -60,12 +58,14 @@ function App() {
     const walk = (x - startX) * 2;
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
+
   const handleTouchStart = (e) => {
     const touchStart = e.touches[0].clientX;
     setIsMouseDown(true);
     setStartX(touchStart - carouselRef.current.offsetLeft);
     setScrollLeft(carouselRef.current.scrollLeft);
   };
+
   const handleTouchEnd = () => setIsMouseDown(false);
   const handleTouchMove = (e) => {
     if (!isMouseDown) return;
@@ -78,7 +78,6 @@ function App() {
   // Tab Content Renderer
   const renderTabContent = () => {
     let images = [];
-
     switch (activeTab) {
       case 'Suites':
         images = [suiteImage1, suiteImage2, suiteImage3];
@@ -95,7 +94,6 @@ function App() {
       default:
         images = [];
     }
-
     return (
       <div className="tab-images">
         {images.map((imgSrc, index) => (
@@ -110,110 +108,81 @@ function App() {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // HomePage component should not be inside App function. Move this to the default export.
-  const HomePage = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-  
-    const handleTabClick = (path) => {
-      navigate(path);
-    };
-  
-    const isActive = (path) => location.pathname === path;
+  return (
+    <div className="App">
+      {/* Hero Section */}
+      <section className="hero">
+        <img src={coverImage} alt="Hotel Cover" className="cover-image" />
+        <div className="overlay-text">The Coast Hotel</div>
+      </section>
 
-    return (
-      <div className="App">
-        {/* Navbar */}
-        <nav className="navbar">
-          <ul className="nav-left">
-          <Link to="/" className="tab-button">Home</Link>
-          <Link to="/rooms" className="tab-button">Rooms</Link>
-          <Link to="/book" className="tab-button">Book Now</Link>
-          </ul>
-          <div className="nav-center">The Coast</div>
-          <ul className="nav-right">
-            <li onClick={() => scrollToSection(servicesRef)}>Services</li>
-            <li onClick={() => scrollToSection(galleryRef)}>Gallery</li>
-            <li onClick={() => scrollToSection(contactRef)}>Contacts</li>
-          </ul>
-        </nav>
+      {/* Welcome Text */}
+      <section className="coast-content">
+        <p>
+          Welcome to The Coast Hotel – where comfort meets the sea breeze.
+          Nestled along the serene shoreline, The Coast Hotel offers a relaxing
+          escape with modern amenities and a touch of coastal charm. Whether
+          you're planning a romantic getaway, a family vacation, or a business trip,
+          our elegant rooms and exceptional service promise a memorable stay.
+        </p>
+      </section>
 
-        {/* Hero Section */}
-        <section className="hero">
-          <img src={coverImage} alt="Hotel Cover" className="cover-image" />
-          <div className="overlay-text">The Coast Hotel</div>
-        </section>
-
-        {/* Welcome Text */}
-        <section className="coast-content">
-          <p>
-            Welcome to The Coast Hotel – where comfort meets the sea breeze.
-            Nestled along the serene shoreline, The Coast Hotel offers a relaxing
-            escape with modern amenities and a touch of coastal charm. Whether
-            you're planning a romantic getaway, a family vacation, or a business trip,
-            our elegant rooms and exceptional service promise a memorable stay.
-          </p>
-        </section>
-
-        {/* Services Section */}
-        <section ref={servicesRef} >
-          <h2 className="coast-services">What We Offer</h2>
-          <div
-            ref={carouselRef}
-            className="carousel-container"
-            onMouseDown={handleMouseDown}
-            onMouseLeave={handleMouseLeave}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            onTouchMove={handleTouchMove}
-          >
-            <div className="carousel">
-              <div className="carousel-box">Deluxe Room</div>
-              <div className="carousel-box">Ocean View</div>
-              <div className="carousel-box">Spa & Wellness</div>
-              <div className="carousel-box">Fine Dining</div>
-              <div className="carousel-box">Conference Room</div>
-              <div className="carousel-box">Beach Access</div>
-            </div>
+      {/* Services Section */}
+      <section ref={servicesRef}>
+        <h2 className="coast-services">What We Offer</h2>
+        <div
+          ref={carouselRef}
+          className="carousel-container"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
+        >
+          <div className="carousel">
+            <div className="carousel-box">Deluxe Room</div>
+            <div className="carousel-box">Ocean View</div>
+            <div className="carousel-box">Spa & Wellness</div>
+            <div className="carousel-box">Fine Dining</div>
+            <div className="carousel-box">Conference Room</div>
+            <div className="carousel-box">Beach Access</div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Gallery Section */}
-        <section ref={galleryRef} >
-          <h2 className="coast-gallery">A Glimpse of Coast</h2>
-          {/* Tab Bar */}
-          <div className="tab-bar">
-            {['Suites', 'Foods', 'Nature', 'Activities'].map((tab) => (
-              <button
-                key={tab}
-                className={`tab-button ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+      {/* Gallery Section */}
+      <section ref={galleryRef}>
+        <h2 className="coast-gallery">A Glimpse of Coast</h2>
+        {/* Tab Bar */}
+        <div className="tab-bar">
+          {['Suites', 'Foods', 'Nature', 'Activities'].map((tab) => (
+            <button
+              key={tab}
+              className={`tab-button ${activeTab === tab ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
 
-          {/* Tab Content */}
-          <div className="tab-content">
-            {renderTabContent()}
-          </div>
-        </section>
+        {/* Tab Content */}
+        <div className="tab-content">
+          {renderTabContent()}
+        </div>
+      </section>
 
-        {/* Contact Section */}
-        <section ref={contactRef} className="coast-contact">
-          <h2>Contact Us</h2>
-          <p>Email: info@thecoasthotel.com</p>
-          <p>Phone: +1 234 567 8900</p>
-          <p>Location: 123 Beachfront Avenue, Seaside City</p>
-        </section>
-      </div>
-    );
-  };
-
-  return <HomePage />;
+      {/* Contact Section */}
+      <section ref={contactRef} className="coast-contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@thecoasthotel.com</p>
+        <p>Phone: +1 234 567 8900</p>
+        <p>Location: 123 Beachfront Avenue, Seaside City</p>
+      </section>
+    </div>
+  );
 }
 
-export default App;
+export default HomePage;

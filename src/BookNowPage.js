@@ -2,11 +2,10 @@ import React from 'react';
 
 function BookNowPage() {
   return (
-    <section>
-      <h2>Book Now</h2>
-      <p>Reserve your stay with us and enjoy a peaceful getaway by the sea.</p>
-      {/* Add booking form or details here */}
-    </section>
+    <div>
+      <h1>This is the Book Now Page</h1>
+      <p>Book your stay with us today.</p>
+    </div>
   );
 }
 
