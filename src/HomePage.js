@@ -173,14 +173,14 @@ function HomePage() {
           {renderTabContent()}
         </div>
       </section>
-
-      {/* Contact Section */}
+{/* contact section */}
       <section ref={contactRef} className="coast-contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@thecoasthotel.com</p>
-        <p>Phone: +1 234 567 8900</p>
-        <p>Location: 123 Beachfront Avenue, Seaside City</p>
-      </section>
+  <h2>Contact Us</h2>
+  <p><i className="fas fa-envelope"></i> info@thecoasthotel.com</p>
+  <p><i className="fas fa-phone-alt"></i> +1 234 567 8900</p>
+  <p><i className="fas fa-map-marker-alt"></i> 123 Beachfront Avenue, Seaside City</p>
+</section>
+
     </div>
   );
 }
