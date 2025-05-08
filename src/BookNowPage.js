@@ -1,38 +1,109 @@
 import React, { useState } from 'react';
-import './BookNowPage.css';  // Import the CSS file
+import './BookNowPage.css';
 
 function BookNowPage() {
-  const [hotel, setHotel] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [guests, setGuests] = useState(1);
+  const [roomType, setRoomType] = useState('Standard');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Booking Details:
-      Hotel: ${hotel}
-      Check-in Date: ${checkInDate}
-      Check-out Date: ${checkOutDate}
-      Number of Guests: ${guests}`);
+
+    const bookingData = {
+      fullName,
+      address,
+      email,
+      phone,
+      roomType,
+      checkInDate,
+      checkOutDate,
+      guests
+    };
+
+    fetch('http://localhost/book_now.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(bookingData)
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+      })
+      .catch(err => {
+        alert('Booking failed: ' + err.message);
+      });
   };
 
   return (
     <div className="booking-container">
       <h1>Book Your Stay</h1>
-      <p>Choose a hotel, select your dates, and reserve your stay with us!</p>
+      <p>Please enter your information to reserve a room.</p>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="hotel">Hotel</label>
+          <label htmlFor="fullName">Full Name</label>
           <input
             type="text"
-            id="hotel"
-            name="hotel"
-            value={hotel}
-            onChange={(e) => setHotel(e.target.value)}
-            placeholder="Enter hotel name"
+            id="fullName"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             required
           />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="address">Address</label>
+          <input
+            type="text"
+            id="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="roomType">Room Type</label>
+          <select
+            id="roomType"
+            value={roomType}
+            onChange={(e) => setRoomType(e.target.value)}
+            required
+          >
+            <option value="Standard">Standard</option>
+            <option value="Deluxe">Deluxe</option>
+            <option value="Suite">Suite</option>
+            <option value="Family">Family</option>
+          </select>
         </div>
 
         <div className="form-group">
@@ -40,7 +111,6 @@ function BookNowPage() {
           <input
             type="date"
             id="check-in"
-            name="check-in"
             value={checkInDate}
             onChange={(e) => setCheckInDate(e.target.value)}
             required
@@ -52,7 +122,6 @@ function BookNowPage() {
           <input
             type="date"
             id="check-out"
-            name="check-out"
             value={checkOutDate}
             onChange={(e) => setCheckOutDate(e.target.value)}
             required
@@ -64,7 +133,6 @@ function BookNowPage() {
           <input
             type="number"
             id="guests"
-            name="guests"
             value={guests}
             onChange={(e) => setGuests(e.target.value)}
             min="1"
