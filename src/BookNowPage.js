@@ -25,7 +25,7 @@ function BookNowPage() {
       guests
     };
 
-    fetch('http://localhost/book_now.php', {
+    fetch('http://localhost/booking-hotel-website/src/book_now.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
