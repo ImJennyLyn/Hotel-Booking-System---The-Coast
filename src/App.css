@@ -291,3 +291,42 @@ body, html {
 .book-button:hover {
   background-color: #2980b9;
 }
+
+
+
+/* services section */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.service-box {
+  flex: 0 0 auto;
+  width: 297px;
+  height: 363px;
+  background-color: #BDB9A4;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.service-box img {
+  width: 124px;
+  height: 114px;
+  object-fit: fill;
+  margin-left:3rem;
+}
+
+.service-box p {
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
