@@ -41,3 +41,13 @@
     padding-top: 60px; /* Adjust this based on your navbar height */
   }
   
+  .nav-center
+  {
+    font-size: 30px;
+    font-weight: normal;
+
+   
+    font-family: 'Birthstone', cursive; 
+   
+    color: #64625C;
+  }
