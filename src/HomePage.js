@@ -21,6 +21,11 @@ import activityImage1 from './images/activities1.jpg';
 import activityImage2 from './images/activities2.jpg';
 import activityImage3 from './images/activities3.jpg';
 
+import serviceImage1 from './images/services1.png';
+import serviceImage2 from './images/services2.png';
+import serviceImage3 from './images/services3.png';
+import serviceImage4 from './images/services4.png';
+
 function HomePage() {
   const carouselRef = useRef(null);
   const servicesRef = useRef(null);
@@ -127,30 +132,28 @@ function HomePage() {
         </p>
       </section>
 
-      {/* Services Section */}
       <section ref={servicesRef}>
-        <h2 className="coast-services">What We Offer</h2>
-        <div
-          ref={carouselRef}
-          className="carousel-container"
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          onTouchMove={handleTouchMove}
-        >
-          <div className="carousel">
-            <div className="carousel-box">Deluxe Room</div>
-            <div className="carousel-box">Ocean View</div>
-            <div className="carousel-box">Spa & Wellness</div>
-            <div className="carousel-box">Fine Dining</div>
-            <div className="carousel-box">Conference Room</div>
-            <div className="carousel-box">Beach Access</div>
-          </div>
-        </div>
-      </section>
+  <h2 className="coast-services">What We Offer</h2>
+  <div className="services-grid">
+    <div className="service-box">
+      <img src={serviceImage1} alt="Deluxe Room" />
+      <p>Deluxe Room</p>
+    </div>
+    <div className="service-box">
+      <img src={serviceImage2} alt="Ocean View" />
+      <p>Ocean View</p>
+    </div>
+    <div className="service-box">
+      <img src={serviceImage3} alt="Spa & Wellness" />
+      <p>Spa & Wellness</p>
+    </div>
+    <div className="service-box">
+      <img src={serviceImage4} alt="Fine Dining" />
+      <p>Fine Dining</p>
+    </div>
+  </div>
+</section>
+
 
       {/* Gallery Section */}
       <section ref={galleryRef}>
