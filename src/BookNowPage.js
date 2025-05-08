@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './BookNowPage.css';
+import Swal from 'sweetalert2';
+
 
 function BookNowPage() {
   const [fullName, setFullName] = useState('');
@@ -10,10 +12,9 @@ function BookNowPage() {
   const [checkOutDate, setCheckOutDate] = useState('');
   const [guests, setGuests] = useState(1);
   const [roomType, setRoomType] = useState('Standard');
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     const bookingData = {
       fullName,
       address,
@@ -24,7 +25,7 @@ function BookNowPage() {
       checkOutDate,
       guests
     };
-
+  
     fetch('http://localhost/booking-hotel-website/src/book_now.php', {
       method: 'POST',
       headers: {
@@ -34,12 +35,32 @@ function BookNowPage() {
     })
       .then(res => res.json())
       .then(data => {
-        alert(data.message);
+        if (data.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Booking Confirmed!',
+            text: 'Your reservation has been successfully submitted.',
+            confirmButtonText: 'OK'
+          }).then(() => {
+            window.location.reload(); // Reload after modal confirmation
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Booking Failed',
+            text: data.message || 'Something went wrong. Please try again.'
+          });
+        }
       })
       .catch(err => {
-        alert('Booking failed: ' + err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Booking failed: ' + err.message
+        });
       });
   };
+  
 
   return (
     <div className="booking-container">
