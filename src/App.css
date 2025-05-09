@@ -280,14 +280,14 @@ body, html {
 
 .room-page {
   padding: 60px 20px;
-  background-color: #fdfdfd;
+  background-color: #FAF6E3;
   text-align: center;
 }
 
 .room-title {
-  font-size: 36px;
-  color: #2c3e50;
-  margin-bottom: 10px;
+  font-size: 40px;
+  color: #605e5a;  margin-bottom: 10px;
+  font-family: 'Birthstone', cursive; 
 }
 
 .room-intro {
@@ -304,7 +304,7 @@ body, html {
 }
 
 .room-card {
-  background: #fff;
+  background-color: #BDB9A4;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -338,11 +338,11 @@ body, html {
 
 .room-price {
   font-weight: bold;
-  color: #3498db;
+  color: #605e5a;
 }
 
 .book-button {
-  background-color: #3498db;
+  background-color: #605e5a;
   color: white;
   padding: 10px 16px;
   border: none;
@@ -352,7 +352,7 @@ body, html {
 }
 
 .book-button:hover {
-  background-color: #2980b9;
+  background-color: #454442;
 }
 
 
