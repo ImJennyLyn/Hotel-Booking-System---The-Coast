@@ -138,6 +138,7 @@ function HomePage() {
     <div className="service-box">
       <img src={serviceImage1} alt="Deluxe Room" />
       <p>Deluxe Room</p>
+      
     </div>
     <div className="service-box">
       <img src={serviceImage2} alt="Ocean View" />
@@ -177,12 +178,35 @@ function HomePage() {
         </div>
       </section>
 {/* contact section */}
-      <section ref={contactRef} className="coast-contact">
-  <h2>Contact Us</h2>
-  <p><i className="fas fa-envelope"></i> info@thecoasthotel.com</p>
-  <p><i className="fas fa-phone-alt"></i> +1 234 567 8900</p>
-  <p><i className="fas fa-map-marker-alt"></i> 123 Beachfront Avenue, Seaside City</p>
+<section ref={contactRef} className="contact-container">
+  <div className="contact-form-area">
+    <h3>Send us a Message</h3>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        window.location.href = `mailto:info@thecoasthotel.com?subject=${encodeURIComponent(e.target.subject.value)}&body=${encodeURIComponent(
+          `Name: ${e.target.name.value}\nEmail: ${e.target.email.value}\n\nMessage:\n${e.target.message.value}`
+        )}`;
+      }}
+    >
+      <div className="input-row">
+        <input type="text" name="name" placeholder="Full name" required />
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+      <input type="text" name="subject" placeholder="Subject" required />
+      <textarea name="message" placeholder="Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <div className="contact-info-area">
+    <h3>Contacts Us</h3>
+    <p><strong>Phone:</strong> +63 912 345 6789</p>
+    <p><strong>Email:</strong> info@thecoasthotel.com</p>
+    <p><strong>Facebook</strong></p>
+  </div>
 </section>
+
 
     </div>
   );

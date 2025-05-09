@@ -187,31 +187,72 @@ body, html {
 
 /* contact section */
 
-.coast-contact {
-  background-color: #BDB9A4;
-  padding: 60px 20px;
-  text-align: center;
-  border-top: 1px solid #e0e0e0;
-  margin-top: 20rem;
-  height: 30rem;
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #b4ae97;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
 }
 
-.coast-contact h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+.contact-form-area {
+  background-color: #eae3d1;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 55%;
 }
 
-.coast-contact p {
-  font-size: 18px;
-  margin: 10px 0;
-  color: #555;
+.contact-form-area h3 {
+  margin-bottom: 1rem;
+  font-size: 16px;
 }
 
-.coast-contact p i {
-  margin-right: 10px;
-  color: #3498db;
+.contact-info-area {
+  width: 35%;
+  padding-left: 2rem;
 }
+
+.contact-info-area h3 {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+.contact-info-area p {
+  margin: 0.3rem 0;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-form-area input,
+.contact-form-area textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 10px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  font-family: 'Georgia', serif;
+  font-size: 12px;
+}
+
+.input-row input {
+  width: 100%;
+}
+
+.contact-form-area button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #605e5a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+}
+
 
 
 
