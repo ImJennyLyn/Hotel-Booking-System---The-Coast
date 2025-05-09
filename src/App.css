@@ -193,13 +193,18 @@ body, html {
   background-color: #b4ae97;
   padding: 2rem;
   font-family: 'Georgia', serif;
+  margin-top: 15rem;
+  height: 30rem;
+
 }
 
 .contact-form-area {
+  margin-top: 2rem;
   background-color: #eae3d1;
   padding: 1.5rem;
   border-radius: 10px;
-  width: 55%;
+  width: 40%;
+  height: 80%
 }
 
 .contact-form-area h3 {
@@ -213,12 +218,25 @@ body, html {
 }
 
 .contact-info-area h3 {
-  font-size: 20px;
+  font-size: 36px;
   margin-bottom: 1rem;
+  font-family: 'Georgia', serif;
+  color:  #605e5a;
+  font-weight: normal;
 }
 
 .contact-info-area p {
   margin: 0.3rem 0;
+  font-family: 'Georgia', serif;
+  color:  #605e5a;
+  font-size: 24px;
+ 
+
+}
+.contact-info-area
+{
+  margin-top: 7rem;
+  margin-right: 10rem;
 }
 
 .input-row {
@@ -236,6 +254,8 @@ body, html {
   border-radius: 5px;
   font-family: 'Georgia', serif;
   font-size: 12px;
+  background-color: #6a635a43;
+
 }
 
 .input-row input {
