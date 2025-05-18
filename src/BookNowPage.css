@@ -2,13 +2,18 @@
 
 /* Container for the booking page */
 .booking-container {
-    max-width: 600px;
-    padding: 20px;
+    max-width: 1000px; /* wider for landscape */
+    padding: 20px 40px;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Center the container */}
+    margin: 40px auto; /* added margin-top/bottom for spacing */
+    display: flex;
+    flex-direction: row; /* make content align side by side */
+    gap: 40px; /* space between elements */
+}
+
   
   /* Header styling */
   .booking-container h1 {
@@ -74,4 +79,35 @@
   .booking-container button:focus {
     outline: none;
   }
-  
+  .booking-info, .booking-form {
+  flex: 1;
+}
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.half-width {
+  flex: 1 1 48%;
+}
+
+.quarter-width {
+  flex: 1 1 23%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
