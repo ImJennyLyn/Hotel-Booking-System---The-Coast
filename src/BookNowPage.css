@@ -2,15 +2,16 @@
 
 /* Container for the booking page */
 .booking-container {
-    max-width: 1000px; /* wider for landscape */
+    max-width: 1000px; 
     padding: 0px;
     font-family: Arial, sans-serif;
     background-color: #ece6da;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 40px auto; /* added margin-top/bottom for spacing */
+    margin: 40px auto; 
     display: flex;
-    flex-direction: row; /* make content align side by side */
+    flex-direction: row; 
+
 
 }
 
@@ -51,10 +52,10 @@
   
   /* Label for form fields */
   .booking-container label {
-    font-weight: bold;
+    font-weight: normal;
     display: block;
     margin-bottom: 8px;
-    color: #333;
+    color: #464444;
   }
   
   /* Input field styling */
@@ -62,9 +63,10 @@
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #cbcac8;
     border-radius: 4px;
     margin-top: 8px;
+    background-color: #eeebe8;
   }
   
   /* Submit button styling */
@@ -100,17 +102,23 @@
   background-size: cover;
   background-position: center; 
   background-repeat: no-repeat;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
 }
 
 .booking-form {
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
   display: flex;
   flex-direction: column;
   background-color: #cbbead;
   flex: 3; 
+  
   padding: 20px;
 }
 
 .booking-form form {
+  margin-top: 1rem;
   width: 100%; 
 }
 .form-row {
@@ -143,4 +151,6 @@ booking-container input,
   border-radius: 4px;
   margin-top: 8px;
   box-sizing: border-box; /* Prevent overflow */
+      background-color: #eeebe8;
+
 }
