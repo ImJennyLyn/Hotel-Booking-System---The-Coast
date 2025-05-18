@@ -64,108 +64,115 @@ function BookNowPage() {
 
   return (
     <div className="booking-container">
+      <div className="booing-info">
       <h1>Book Your Stay</h1>
       <p>Please enter your information to reserve a room.</p>
+</div><form onSubmit={handleSubmit}>
+  <div className="form-group">
+    <label htmlFor="fullName">Full Name</label>
+    <input
+      type="text"
+      id="fullName"
+      value={fullName}
+      onChange={(e) => setFullName(e.target.value)}
+      required
+    />
+  </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="fullName">Full Name</label>
-          <input
-            type="text"
-            id="fullName"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </div>
+  <div className="form-group">
+    <label htmlFor="address">Address</label>
+    <input
+      type="text"
+      id="address"
+      value={address}
+      onChange={(e) => setAddress(e.target.value)}
+      required
+    />
+  </div>
 
-        <div className="form-group">
-          <label htmlFor="address">Address</label>
-          <input
-            type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </div>
+  {/* Email and Phone in one row */}
+  <div className="form-row">
+    <div className="form-group half-width">
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+    </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+    <div className="form-group half-width">
+      <label htmlFor="phone">Phone Number</label>
+      <input
+        type="tel"
+        id="phone"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        required
+      />
+    </div>
+  </div>
 
-        <div className="form-group">
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </div>
+  {/* Room, Check-in, Check-out, Guests */}
+  <div className="form-row">
+    <div className="form-group quarter-width">
+      <label htmlFor="roomType">Room Type</label>
+      <select
+        id="roomType"
+        value={roomType}
+        onChange={(e) => setRoomType(e.target.value)}
+        required
+      >
+        <option value="Standard">Standard</option>
+        <option value="Deluxe">Deluxe</option>
+        <option value="Suite">Suite</option>
+        <option value="Family">Family</option>
+      </select>
+    </div>
 
-        <div className="form-group">
-          <label htmlFor="roomType">Room Type</label>
-          <select
-            id="roomType"
-            value={roomType}
-            onChange={(e) => setRoomType(e.target.value)}
-            required
-          >
-            <option value="Standard">Standard</option>
-            <option value="Deluxe">Deluxe</option>
-            <option value="Suite">Suite</option>
-            <option value="Family">Family</option>
-          </select>
-        </div>
+    <div className="form-group quarter-width">
+      <label htmlFor="check-in">Check-in Date</label>
+      <input
+        type="date"
+        id="check-in"
+        value={checkInDate}
+        onChange={(e) => setCheckInDate(e.target.value)}
+        required
+      />
+    </div>
 
-        <div className="form-group">
-          <label htmlFor="check-in">Check-in Date</label>
-          <input
-            type="date"
-            id="check-in"
-            value={checkInDate}
-            onChange={(e) => setCheckInDate(e.target.value)}
-            required
-          />
-        </div>
+    <div className="form-group quarter-width">
+      <label htmlFor="check-out">Check-out Date</label>
+      <input
+        type="date"
+        id="check-out"
+        value={checkOutDate}
+        onChange={(e) => setCheckOutDate(e.target.value)}
+        required
+      />
+    </div>
 
-        <div className="form-group">
-          <label htmlFor="check-out">Check-out Date</label>
-          <input
-            type="date"
-            id="check-out"
-            value={checkOutDate}
-            onChange={(e) => setCheckOutDate(e.target.value)}
-            required
-          />
-        </div>
+    <div className="form-group quarter-width">
+      <label htmlFor="guests">Number of Guests</label>
+      <input
+        type="number"
+        id="guests"
+        value={guests}
+        onChange={(e) => setGuests(e.target.value)}
+        min="1"
+        max="10"
+        required
+      />
+    </div>
+  </div>
 
-        <div className="form-group">
-          <label htmlFor="guests">Number of Guests</label>
-          <input
-            type="number"
-            id="guests"
-            value={guests}
-            onChange={(e) => setGuests(e.target.value)}
-            min="1"
-            max="10"
-            required
-          />
-        </div>
+  <div style={{ textAlign: 'center' }}>
+    <button type="submit">Confirm Booking</button>
+  </div>
+</form>
 
-        <div style={{ textAlign: 'center' }}>
-          <button type="submit">Confirm Booking</button>
-        </div>
-      </form>
     </div>
   );
 }
