@@ -3,15 +3,15 @@
 /* Container for the booking page */
 .booking-container {
     max-width: 1000px; /* wider for landscape */
-    padding: 20px 40px;
+    padding: 0px;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #ece6da;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 40px auto; /* added margin-top/bottom for spacing */
     display: flex;
     flex-direction: row; /* make content align side by side */
-    gap: 40px; /* space between elements */
+
 }
 
   
@@ -86,12 +86,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+   background-color: #333;
+   width:20%;
 }
 .booking-form {
   display: flex;
   flex-direction: column;
+  background-color: #f5efef;
+   width: 100%;
 }
-
+.booking-form form {
+  width: 100%; 
+}
 .form-row {
   display: flex;
   flex-wrap: wrap;
@@ -100,7 +106,7 @@
 }
 
 .half-width {
-  flex: 1 1 48%;
+  flex: 1 1 40%;
 }
 
 .quarter-width {
@@ -110,4 +116,16 @@
 .form-group {
   display: flex;
   flex-direction: column;
+ padding: 10px;
+  margin-bottom: 20px;
+}
+booking-container input,
+.booking-container select {
+  width: 100%; /* Ensure select matches input size */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 8px;
+  box-sizing: border-box; /* Prevent overflow */
 }
