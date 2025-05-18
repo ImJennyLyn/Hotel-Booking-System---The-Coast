@@ -118,18 +118,16 @@ function BookNowPage() {
   {/* Room, Check-in, Check-out, Guests */}
   <div className="form-row">
     <div className="form-group quarter-width">
-      <label htmlFor="roomType">Room Type</label>
-      <select
-        id="roomType"
-        value={roomType}
-        onChange={(e) => setRoomType(e.target.value)}
+      <label htmlFor="guests">Number of Guests</label>
+      <input
+        type="number"
+        id="guests"
+        value={guests}
+        onChange={(e) => setGuests(e.target.value)}
+        min="1"
+        max="10"
         required
-      >
-        <option value="Standard">Standard</option>
-        <option value="Deluxe">Deluxe</option>
-        <option value="Suite">Suite</option>
-        <option value="Family">Family</option>
-      </select>
+      />
     </div>
 
     <div className="form-group quarter-width">
@@ -155,16 +153,19 @@ function BookNowPage() {
     </div>
 
     <div className="form-group quarter-width">
-      <label htmlFor="guests">Number of Guests</label>
-      <input
-        type="number"
-        id="guests"
-        value={guests}
-        onChange={(e) => setGuests(e.target.value)}
-        min="1"
-        max="10"
+       <label htmlFor="roomType">Room Type</label>
+      <select
+        id="roomType"
+        value={roomType}
+        onChange={(e) => setRoomType(e.target.value)}
         required
-      />
+      >
+        <option value="Standard">Standard</option>
+        <option value="Deluxe">Deluxe</option>
+        <option value="Suite">Suite</option>
+        <option value="Family">Family</option>
+      </select>
+     
     </div>
   </div>
 
