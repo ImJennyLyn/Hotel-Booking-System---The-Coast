@@ -64,10 +64,12 @@ function BookNowPage() {
 
   return (
     <div className="booking-container">
-      <div className="booing-info">
+      <div className="booking-info">
       <h1>Book Your Stay</h1>
       <p>Please enter your information to reserve a room.</p>
-</div><form onSubmit={handleSubmit}>
+</div>
+<div className="booking-form">
+<form onSubmit={handleSubmit}>
   <div className="form-group">
     <label htmlFor="fullName">Full Name</label>
     <input
@@ -173,6 +175,7 @@ function BookNowPage() {
     <button type="submit">Confirm Booking</button>
   </div>
 </form>
+</div>
 
     </div>
   );
