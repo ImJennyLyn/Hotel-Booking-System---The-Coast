@@ -16,4 +16,5 @@ The Room Page displays available hotel rooms with images, brief descriptions, pr
 ![image](https://github.com/user-attachments/assets/ac58b0b5-4f01-4359-81cb-bd10895e6eb0)
 
 # Booking Page
+The Booking Page allows users to finalize their room selection by providing personal and payment details. It includes a summary of the chosen room, booking dates, and a form to complete the reservation. A confirmation message is displayed upon successful booking.
 ![image](https://github.com/user-attachments/assets/51816e0f-e74c-44cc-8b93-a59d3e598c68)
