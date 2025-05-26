@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-# The Coast
+# The Coast Hotel
 
 The Coast is a  hotel room booking website built with React.js. It allows users to browse, view, and book hotel rooms easily with a clean and modern interface. Designed for a smooth user experience, it's perfect for showcasing a beachside or luxury hotel.
 
