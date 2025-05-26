@@ -12,6 +12,7 @@ The Home Page provides an inviting introduction to the hotel. It features a visu
 ![2025-05-20 23 24 20](https://github.com/user-attachments/assets/132642f7-6a9c-42f2-9092-5b869b7fe2b0)
 
 # Room Page
+The Room Page displays available hotel rooms with images, brief descriptions, pricing, and amenities. Each room entry typically includes a "Book Now" or "View Details" button, enabling users to select the room that best fits their preferences.
 ![image](https://github.com/user-attachments/assets/ac58b0b5-4f01-4359-81cb-bd10895e6eb0)
 
 # Booking Page
